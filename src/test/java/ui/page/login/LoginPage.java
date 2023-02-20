@@ -23,23 +23,8 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement loginButton;
 
-    @FindBy(xpath = "//a[@routerlink='/user/registration']")
-    private WebElement registerLink;
-
-    @FindBy(id = "error-message")
-    private WebElement errorMsg;
-
-    @FindBy(id = "email-error-required")
-    private WebElement emailErrorMsg;
-
-    @FindBy(id = "password-error-required")
-    private WebElement passwordErrorMsg;
-
-    @FindBy(xpath = "//h3[@data-value=\"Content Writing - May 2021\"]")
-    private WebElement header;
-
-    @FindBy(xpath = "//div[@class=\"card-body\"]//h2")
-    WebElement appHeader;
+    @FindBy(xpath = "//div[@id=\"error-message\"]")
+    private WebElement errorLoginPasswordMessage;
 
     public void getAuth(String email, String password) {
         emailInput.clear();
@@ -47,6 +32,10 @@ public class LoginPage {
         passwordInput.clear();
         passwordInput.sendKeys(password);
         loginButton.click();
+    }
+
+    public String getErrorLoginPasswordMessage() {
+        return errorLoginPasswordMessage.getText();
     }
 
 }
