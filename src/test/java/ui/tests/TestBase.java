@@ -9,6 +9,9 @@ import java.time.Duration;
 
 public class TestBase {
     protected WebDriver driver;
+
+    protected final String EMAIL = "test@gmail.com";
+    protected final String PASSWORD = "test@gmail.com";
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
