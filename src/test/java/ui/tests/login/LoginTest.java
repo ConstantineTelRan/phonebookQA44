@@ -2,6 +2,7 @@ package ui.tests.login;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.Test;
 import ui.page.MenuEl;
 import ui.page.login.LoginPage;
@@ -18,11 +19,10 @@ public class LoginTest extends TestBase {
 
     String errorLoginPasswordMessage = "Please check your activation or Login + Password combination";
 
-    @Test
+    @Test(testName = "The positive authorization")
     public void loginTest() {
-        logger.info("The positive authorization");
-        logger.info("The negative authorization test - the authorization with wrong email and password");
         logger.info("The test data:\nlogin - " + email+ "\npassword - " + password);
+
         loginPage = new LoginPage(driver);
         loginPage.getLogin(email, password);
         menu = new MenuEl(driver);
@@ -40,6 +40,5 @@ public class LoginTest extends TestBase {
         Assert.assertEquals(loginPage.getErrorLoginPasswordMessage(), errorLoginPasswordMessage,
                 "The error message did not match with expected text");
     }
-
 
 }

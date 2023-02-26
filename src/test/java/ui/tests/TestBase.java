@@ -22,9 +22,9 @@ public class TestBase {
 
     @BeforeMethod
     public void setUp(Method m) {
-        logger.info("The browser with the login page was opened");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        logger.info("The browser was opened");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://phonebook.telran-edu.de:8080/user/login");
         logger.info("The test method " + m.getName()+ " was started");
@@ -39,10 +39,12 @@ public class TestBase {
 
     @AfterMethod(alwaysRun=true)
     public void afterMLogout(ITestResult result){
+        logger.info(result.getMethod().getTestClass().toString());
         if (result.isSuccess()) {
             logger.info("PASSED " + result.getMethod().getMethodName());
         } else {
             logger.info("FAILED " + result.getMethod().getMethodName());
         }
+        logger.info(result.getThrowable().toString());
     }
 }
