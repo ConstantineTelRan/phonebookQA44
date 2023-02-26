@@ -20,6 +20,9 @@ public class LoginTest extends TestBase {
 
     @Test
     public void loginTest() {
+        logger.info("The positive authorization");
+        logger.info("The negative authorization test - the authorization with wrong email and password");
+        logger.info("The test data:\nlogin - " + email+ "\npassword - " + password);
         loginPage = new LoginPage(driver);
         loginPage.getLogin(email, password);
         menu = new MenuEl(driver);
@@ -29,6 +32,8 @@ public class LoginTest extends TestBase {
 
     @Test
     public void loginWithWrongLoginAndPassword() {
+        logger.info("The negative authorization test - the authorization with wrong email and password");
+        logger.info("The test data:\nlogin - " + wrongEmail+ "\npassword - " + wrongPassword);
         loginPage = new LoginPage(driver);
         loginPage.getLogin(wrongEmail, wrongPassword);
 
