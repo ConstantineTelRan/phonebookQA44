@@ -10,7 +10,6 @@ import ui.page.contact.ContactPage;
 import ui.page.login.LoginPage;
 import ui.tests.TestBase;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class AddNewContactTest extends TestBase {

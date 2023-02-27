@@ -44,7 +44,8 @@ public class TestBase {
             logger.info("PASSED " + result.getMethod().getMethodName());
         } else {
             logger.info("FAILED " + result.getMethod().getMethodName());
+            logger.info(result.getThrowable().toString());
         }
-        logger.info(result.getThrowable().toString());
+
     }
 }
