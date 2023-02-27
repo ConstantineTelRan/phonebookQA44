@@ -16,10 +16,11 @@ public class LoginTest extends TestBase {
     String wrongEmail = faker.internet().emailAddress();
     String wrongPassword = faker.internet().password();
 
-    String errorLoginPasswordMessage = "Please check your activation or Login + Password combination";
+    String errorLoginPasswordMessage = "Please check your activation or Login + Password msksks";
 
     @Test
     public void loginTest() {
+        logger.info("Test data:\nlogin - " + email + "\npassword - " + password);
         loginPage = new LoginPage(driver);
         loginPage.getLogin(email, password);
         menu = new MenuEl(driver);
@@ -29,6 +30,7 @@ public class LoginTest extends TestBase {
 
     @Test
     public void loginWithWrongLoginAndPassword() {
+        logger.info("Test data:\nlogin - " + wrongEmail + "\npassword - " + wrongPassword);
         loginPage = new LoginPage(driver);
         loginPage.getLogin(wrongEmail, wrongPassword);
 
