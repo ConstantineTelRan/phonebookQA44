@@ -24,6 +24,21 @@ public class ContactPage {
     @FindBy(xpath = "//div[@id='contact-description']")
     WebElement contactDescription;
 
+    @FindBy(xpath = "//button[@id=\"btn-edit-contact\"]")
+    WebElement editContactButton;
+
+    @FindBy(xpath = "//button[@id=\"btn-edit-contact\"]")
+    WebElement firstNameFieldEdit;
+
+    @FindBy(xpath = "//input[@name=\"input-ec-lastName\"]")
+    WebElement lastNameFieldEdit;
+
+    @FindBy(xpath = "//textarea[@name=\"input-ec-description\"]")
+    WebElement contactDescriptionFieldEdit;
+
+    @FindBy(xpath = "//button[normalize-space()=\"Save\"]")
+    WebElement saveButtonEditContact;
+
     // int x = 1
     // List<Integer> list = new ArrayList();
     // [1, 2, 5, 13, 34, 89]
@@ -38,6 +53,17 @@ public class ContactPage {
         info.put("last name", lastNameField.getText());
         info.put("contact description", contactDescription.getText());
         return info;
+    }
+
+    public void editContact(String firsName, String lastName, String about) {
+        editContactButton.click();
+        firstNameFieldEdit.clear();
+        firstNameFieldEdit.sendKeys(firsName);
+        lastNameFieldEdit.clear();
+        lastNameFieldEdit.sendKeys(lastName);
+        contactDescriptionFieldEdit.clear();
+        contactDescriptionFieldEdit.sendKeys(about);
+        saveButtonEditContact.click();
     }
 
 }
