@@ -1,5 +1,8 @@
 package ui.tests;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
@@ -8,6 +11,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
 
@@ -30,19 +35,26 @@ public class TestBase {
     @AfterMethod
     public void tearDown(Method m){
         logger.info(m.getName() + " stop");
-        driver.quit();
-        logger.info("Stop test");
     }
 
+
     @AfterMethod(alwaysRun = true)
-    public void testInformation(ITestResult result) {
+    public void testInformation(ITestResult result) throws IOException {
         logger.info(result.getMethod().getTestClass().toString());
         if (result.isSuccess()) {
             logger.info("PASSED " + result.getMethod().getMethodName());
         } else {
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            String screenName = "screen_" + System.currentTimeMillis() + ".png";
+            FileUtils.copyFile(scrFile, new File("/Users/coss/IdeaProjects/telRUNexaple/QA_44/phonebookQA44/src/test/screenshot/" + screenName));
             logger.info("FAILED " + result.getMethod().getMethodName());
+            logger.info("The screenshot is - phonebookQA44/src/test/screenshot/" + screenName);
             logger.info(result.getThrowable().toString());
         }
         logger.info("============================================================================");
+        driver.quit();
+        logger.info("Stop test");
     }
+
+
 }
