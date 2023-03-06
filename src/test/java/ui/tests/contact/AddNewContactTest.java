@@ -40,7 +40,7 @@ public class AddNewContactTest extends TestBase {
 
         Map<String, String> info = contactPage.getInfo();
 
-        Assert.assertEquals(info.get("first name"), firstName);
+        Assert.assertEquals(info.get("first name"), "firstName");
         Assert.assertEquals(info.get("last name"), lastName);
         Assert.assertEquals(info.get("contact description"), about);
     }

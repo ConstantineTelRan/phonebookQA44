@@ -7,6 +7,9 @@ import ui.page.MenuEl;
 import ui.page.login.LoginPage;
 import ui.tests.TestBase;
 
+import java.awt.*;
+import java.io.IOException;
+
 public class LoginTest extends TestBase {
     String email = "test@gmail.com";
     String password = "test@gmail.com";
@@ -19,10 +22,10 @@ public class LoginTest extends TestBase {
     String errorLoginPasswordMessage = "Please check your activation or Login + Password msksks";
 
     @Test
-    public void loginTest() {
+    public void loginTest() throws IOException, AWTException {
         logger.info("Test data:\nlogin - " + email + "\npassword - " + password);
         loginPage = new LoginPage(driver);
-        loginPage.getLogin(email, password);
+        loginPage.getLogin(email, "password");
         menu = new MenuEl(driver);
 
         Assert.assertTrue(menu.isAddNewContactMenuLinkDisplayed(), "The main page did not load");
