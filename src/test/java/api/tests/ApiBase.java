@@ -1,9 +1,14 @@
 package api.tests;
 
+import api.EndPoint;
 import com.github.javafaker.Faker;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.Random;
 
 public class ApiBase {
     protected Faker faker = new Faker();
@@ -17,7 +22,35 @@ public class ApiBase {
             .addHeader("Access-Token", API_KEY)
             .build();
 
+    public Response doPostRequest(Object body, EndPoint endPoint, int statusCode) {
+        return RestAssured.given()
+                .spec(spec)
+                .body(body)
+                .when()
+                .log().all()
+                .post(endPoint.getValue())
+                .then()
+                .statusCode(statusCode)
+                .log().all()
+                .extract().response();
+    }
 
+    public Response doDeleteRequest(int id, EndPoint endPoint, int statusCode) {
+        return RestAssured.given()
+                .spec(spec)
+                .when()
+                .pathParam("id", id)
+                .log().all()
+                .delete(endPoint.getValue())
+                .then()
+                .statusCode(statusCode)
+                .log().all()
+                .extract().response();
+    }
 
+    public int getWrongId() {
+        Random rnd = new Random();
+        return 100000 + rnd.nextInt(900000);
+    }
 
 }
