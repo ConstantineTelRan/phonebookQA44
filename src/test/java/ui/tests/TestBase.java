@@ -29,10 +29,10 @@ public class TestBase {
     public void setUp(Method m) {
         logger.info("Start test");
 //        driver = new ChromeDriver();
-//        driver = new FirefoxDriver();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
+        driver = new FirefoxDriver();
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--remote-allow-origins=*");
+//        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://phonebook.telran-edu.de:8080/user/login");
