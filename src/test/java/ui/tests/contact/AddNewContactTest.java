@@ -23,6 +23,8 @@ public class AddNewContactTest extends TestBase {
     String lastName = faker.name().lastName();
     String about = faker.lorem().sentence(4);
 
+    String zip = faker.address().zipCode();
+
     @BeforeMethod
     public void precondition() {
         loginPage = new LoginPage(driver);
