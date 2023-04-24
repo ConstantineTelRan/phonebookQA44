@@ -45,15 +45,15 @@ public class TestBase {
     @AfterMethod(alwaysRun = true)
     public void testInformation(ITestResult result, Method m) throws IOException {
         logger.info(result.getMethod().getTestClass().toString());
-        if (result.isSuccess()) {
-            logger.info("PASSED " + result.getMethod().getMethodName());
-        } else {
-            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(scrFile, new File("/Users/coss/IdeaProjects/telRUNexaple/QA_44/phonebookQA44/src/test/screenshot/" + screenName));
-            logger.info("FAILED " + result.getMethod().getMethodName());
-            logger.info("The screenshot is - src/test/screenshot/" + screenName);
-            logger.info(result.getThrowable().toString());
-        }
+//        if (result.isSuccess()) {
+//            logger.info("PASSED " + result.getMethod().getMethodName());
+//        } else {
+//            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//            FileUtils.copyFile(scrFile, new File("/Users/coss/IdeaProjects/telRUNexaple/QA_44/phonebookQA44/src/test/screenshot/" + screenName));
+//            logger.info("FAILED " + result.getMethod().getMethodName());
+//            logger.info("The screenshot is - src/test/screenshot/" + screenName);
+//            logger.info(result.getThrowable().toString());
+//        }
         logger.info("============================================================================");
         logger.info(m.getName() + " stop");
         logger.info("Stop test");
