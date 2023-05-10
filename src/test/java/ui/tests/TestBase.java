@@ -36,9 +36,9 @@ public class TestBase {
 //        options.addArguments("disable-gpu");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-//        driver.manage().window().maximize();
-        driver.manage().window().setSize(new Dimension(2560,1440));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1920,1080));
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("http://phonebook.telran-edu.de:8080/user/login");
         logger.info(m.getName() + " start");
     }
